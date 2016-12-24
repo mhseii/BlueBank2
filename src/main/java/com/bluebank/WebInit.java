@@ -1,4 +1,4 @@
-package main.java.com.bluebank.config;
+package main.java.com.bluebank;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -13,7 +13,7 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class<?>[]{WebConfig.class, PersistenceConfig.class};
+		return new Class<?>[]{WebConfig.class};
 	}
 
 	@Override

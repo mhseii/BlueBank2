@@ -1,5 +1,7 @@
 package main.java.com.bluebank.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,12 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "TBL_ACCOUNT")
-public class Account {
+public class Account implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1114937644057109552L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

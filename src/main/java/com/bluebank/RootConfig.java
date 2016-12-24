@@ -1,4 +1,4 @@
-package main.java.com.bluebank.config;
+package main.java.com.bluebank;
 
 import org.springframework.context.annotation.Configuration;
 
