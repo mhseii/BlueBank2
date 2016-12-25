@@ -1,4 +1,4 @@
-package main.java.com.bluebank;
+package main.java.com.bluebank.config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +19,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = "main.java.com.bluebank.repository")
 @EnableTransactionManagement
 public class PersistenceConfig {
 

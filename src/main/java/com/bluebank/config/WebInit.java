@@ -1,4 +1,4 @@
-package main.java.com.bluebank;
+package main.java.com.bluebank.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;

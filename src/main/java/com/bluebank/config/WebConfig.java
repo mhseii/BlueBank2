@@ -1,4 +1,4 @@
-package main.java.com.bluebank;
+package main.java.com.bluebank.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan
+@ComponentScan(basePackages = "main.java.com.bluebank")
 @Import(value=PersistenceConfig.class)
 public class WebConfig extends WebMvcConfigurerAdapter {
 
