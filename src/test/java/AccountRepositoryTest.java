@@ -27,17 +27,16 @@ import main.java.com.bluebank.web.dto.TransactionDTO;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { WebInit.class, WebConfig.class, PersistenceConfig.class })
 @WebAppConfiguration
-@TestExecutionListeners({ServletTestExecutionListener.class,
-	DependencyInjectionTestExecutionListener.class})
+@TestExecutionListeners({ ServletTestExecutionListener.class, DependencyInjectionTestExecutionListener.class })
 public class AccountRepositoryTest {
-	
+
 	@Autowired
 	AccountRepository accountRepository;
 	@Autowired
 	AccountService accountService;
 
 	protected static final String ACCOUNT_NUMBER = "201612230130D89172";
-	
+
 	@Test
 	public void dependencyInjectionTest() {
 		assertNotNull(String.format("failed to inject %s", accountRepository.toString()), accountRepository);
@@ -51,29 +50,33 @@ public class AccountRepositoryTest {
 		acc.setBalance(new BigDecimal("1000.00"));
 		assertNotNull(accountRepository.save(acc));
 	}
-	/*
+
 	@Test
 	public void respositoryFindByAccountNumberTest() {
 		Account acc = accountRepository.findByAccountNumber(ACCOUNT_NUMBER);
 		assertNotNull(acc);
 	}
-	
+
 	@Test
 	public void depositTest() {
-		
+
 		TransactionDTO transaction = new TransactionDTO();
 		transaction.setSourceAccountNumber(ACCOUNT_NUMBER);
 		transaction.setAmount(new BigDecimal("100.00"));
 		Account acc = accountService.deposit(transaction);
-		assertEquals(new BigDecimal("1100.00"),acc.getBalance());
+		assertEquals(new BigDecimal("1100.00"), acc.getBalance());
 	}
-	*/
+
 	@Test(expected = OptimisticLockException.class)
 	public void repositoryOptimisticLockExceptionTest() {
 		Account acc = new Account();
 		acc.setAccountNumber(ACCOUNT_NUMBER);
 		acc.setBalance(new BigDecimal("400.00"));
-		accountRepository.save(acc);
-		accountRepository.save(acc);
+		try {
+			accountRepository.save(acc);
+			accountRepository.save(acc);
+		} catch (OptimisticLockException ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 }

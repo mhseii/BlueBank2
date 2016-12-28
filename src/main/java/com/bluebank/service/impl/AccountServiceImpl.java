@@ -71,4 +71,9 @@ public class AccountServiceImpl implements AccountService {
 		return null;
 	}
 
+	@Override
+	public Account retrieveAccount(String accountNumber) {
+		return accRepo.findByAccountNumber(accountNumber.trim());
+	}
+
 }

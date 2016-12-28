@@ -8,7 +8,19 @@
 </head>
 <body>
 
-	<h1>hello there!</h1>
-	
+	<h1 style="margin: auto;">Blue Bank</h1>
+
+	<div>
+		<div style="display: inline-block;">
+			<button>deposit</button>
+			<button>withdraw</button>
+			<button>transfer</button>
+		</div>
+		<hr>
+		<div style="display: inline-block;">
+			<label>saldo em conta:</label>
+			<input type="text" disabled="disabled" placeholder="R$ 0,00">
+		</div>
+	</div>
 </body>
 </html>
